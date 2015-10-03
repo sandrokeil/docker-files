@@ -1,4 +1,4 @@
-# Docker php 5.6-cli image
+# Docker php 7.0-cli image
 Extends the official image with the following PHP extensions:
 
 * bcmath 
@@ -12,5 +12,5 @@ Extends the official image with the following PHP extensions:
 Run the following command with the path to your php file.
 
 ```bash
-$ docker run --rm -it --volume $(pwd):/app sandrokeil/php:5.6-cli php [your file]
+$ docker run --rm -it --volume $(pwd):/app sandrokeil/php:7.0-cli php [your file]
 ```
