@@ -10,7 +10,7 @@ $ docker run -it --rm -v $(pwd):/app sandrokeil/bookdown doc/bookdown.json
 
 ## Themes
 This Docker image comes with Bootswatch.com styles and Prism syntax highlighting powered by an awesome 
-Bookdown.io template library on GitHub (tobiju/bookdown-bootswatch-templates).
+Bookdown.io template library on GitHub ([tobiju/bookdown-bootswatch-templates](https://github.com/tobiju/bookdown-bootswatch-templates)).
 
 Here is a list of available themes. 
 
