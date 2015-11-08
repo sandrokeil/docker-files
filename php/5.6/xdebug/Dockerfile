@@ -1,4 +1,5 @@
 FROM sandrokeil/php:5.6-cli
+MAINTAINER Sandro Keil <docker@sandro-keil.de>
 
 WORKDIR /tmp
 

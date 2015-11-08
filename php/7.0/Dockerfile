@@ -1,4 +1,5 @@
 FROM php:7.0-cli
+MAINTAINER Sandro Keil <docker@sandro-keil.de>
 
 RUN apt-get update \
     && apt-get install -y \

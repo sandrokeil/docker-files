@@ -1,5 +1,5 @@
 # Docker php 7.0-cli image
-Extends the official image with the following PHP extensions:
+Extends the official PHP image with the following PHP extensions:
 
 * bcmath 
 * intl 
