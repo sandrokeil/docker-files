@@ -36,5 +36,5 @@ $ docker run --rm -it --volume $(pwd):/app -e PHP_IDE_CONFIG="serverName=applica
 Run the following command with your [blackfire](https://blackfire.io) credentials to profile you cli PHP apps.
 
 ```bash
-$ docker run --rm -it -e BLACKFIRE_SERVER_ID= -e BLACKFIRE_SERVER_TOKEN= -e BLACKFIRE_CLIENT_ID= -e BLACKFIRE_CLIENT_TOKEN= --volume $(pwd):/app sandrokeil/php:5.6-cli-blackfire blackfire $@
+$ docker run --rm -it -e BLACKFIRE_SERVER_ID= -e BLACKFIRE_SERVER_TOKEN= -e BLACKFIRE_CLIENT_ID= -e BLACKFIRE_CLIENT_TOKEN= --volume $(pwd):/app sandrokeil/php:5.6-cli-blackfire blackfire run php [your PHP script]
 ```
