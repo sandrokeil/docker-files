@@ -1,4 +1,5 @@
 FROM php:5.6-fpm
+MAINTAINER Sandro Keil <docker@sandro-keil.de>
 
 RUN apt-get update \
     && apt-get install -y \
