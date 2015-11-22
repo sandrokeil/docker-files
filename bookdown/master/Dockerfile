@@ -1,8 +1,8 @@
 FROM composer/composer
 MAINTAINER Sandro Keil <docker@sandro-keil.de>
 
-ENV BOOKDOWN_VERSION dev-master
-ENV TEMPLATES_VERSION dev-master
+ENV BOOKDOWN_VERSION 0.5.0
+ENV TEMPLATES_VERSION 0.2.0
 ENV TEMPLATES_PATH /root/composer/vendor/tobiju/bookdown-bootswatch-templates/templates
 ENV VENDOR_PATH /root/composer/vendor/
 
