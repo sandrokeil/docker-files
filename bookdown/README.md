@@ -8,6 +8,12 @@ Run the following command with the path to your *bookdown.json* file.
 $ docker run -it --rm -v $(pwd):/app sandrokeil/bookdown doc/bookdown.json
 ```
 
+or if you want to try the develop version to test latest features use
+
+```bash
+$ docker run -it --rm -v $(pwd):/app sandrokeil/bookdown:develop doc/bookdown.json
+```
+
 ## Styles
 This Docker image comes with Bootswatch.com styles and Prism syntax highlighting powered by an awesome 
 Bookdown.io template library on GitHub ([tobiju/bookdown-bootswatch-templates](https://github.com/tobiju/bookdown-bootswatch-templates)).
