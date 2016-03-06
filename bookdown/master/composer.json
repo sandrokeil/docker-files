@@ -1,0 +1,21 @@
+{
+  "name": "sandrokeil/bookdown",
+  "description": "Generates your Bookdown.io documentation.",
+  "homepage": "https://sandro-keil.de",
+  "license": "BSD-3-Clause",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Sandro Keil",
+      "homepage": "https://sandro-keil.de",
+      "role": "maintainer"
+    }
+  ],
+  "require": {
+    "tobiju/bookdown-bootswatch-templates": "^1.0",
+    "webuni/commonmark-table-extension": "^0.4.2",
+    "webuni/commonmark-attributes-extension": "^0.3.1"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

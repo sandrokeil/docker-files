@@ -1,5 +1,6 @@
 # Docker Bookdown.io image
-This container generates your [Bookdown.io](http://bookdown.io/) documentation.
+This container generates your [Bookdown.io](http://bookdown.io/) documentation powered by 
+[Bookdown Bootswatch Templates](https://github.com/tobiju/bookdown-bootswatch-templates).
 
 ## Generate documentation
 Run the following command with the path to your *bookdown.json* file.
