@@ -42,11 +42,13 @@ audio () {
     cd /mp3s
     AUDIO_FILES=
 
-    for f in *.mp3 ; do
-        if [ -n "$AUDIO_FILES" ]; then
-            AUDIO_FILES="${AUDIO_FILES}|"
+    for f in *.mp3; do
+        if [ -e $f ]; then
+            if [ -n "$AUDIO_FILES" ]; then
+                AUDIO_FILES="${AUDIO_FILES}|"
+            fi
+            AUDIO_FILES="${AUDIO_FILES}${f}"
         fi
-        AUDIO_FILES="${AUDIO_FILES}${f}"
     done
 
     if [ -z "$AUDIO_FILES" ]; then
