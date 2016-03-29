@@ -12,6 +12,7 @@
     }
   ],
   "require": {
+    "bookdown/bookdown": "1.x-dev as 1.0.0",
     "tobiju/bookdown-bootswatch-templates": "dev-develop",
     "webuni/commonmark-table-extension": "^0.4.2",
     "webuni/commonmark-attributes-extension": "^0.3.1"
