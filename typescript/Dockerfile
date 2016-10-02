@@ -76,6 +76,12 @@ RUN set -x \
         typings \
         webpack \
 
+    && typings install --global dt~riotjs && \
+    typings install --global dt~riotcontrol && \
+    typings install --global dt~riotjs-render && \
+    typings install --global dt~react && \
+    typings install --global dt~react-dom \
+
 ##############################################################################
 # ~ fin ~
 ##############################################################################
