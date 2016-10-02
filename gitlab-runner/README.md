@@ -69,7 +69,7 @@ version: '2'
 services:
 
   gitlab:
-    image: 'gitlab/gitlab-ce:8.9.1-ce.1'
+    image: 'gitlab/gitlab-ce:8.12.3-ce.0'
     hostname: 'gitlab'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
