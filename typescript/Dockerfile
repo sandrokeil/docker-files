@@ -13,6 +13,7 @@ RUN set -x \
     && echo "http://dl-4.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
     && apk update \
     && apk add \
+        py-pip \
         ca-certificates \
         curl \
         g++ \
@@ -28,6 +29,8 @@ RUN set -x \
         python \
         shadow \
         tar \
+        pip install --upgrade \
+            pip \
 
 ##############################################################################
 # Install Node & NPM
