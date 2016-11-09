@@ -29,8 +29,6 @@ RUN set -x \
         python \
         shadow \
         tar \
-        pip install --upgrade \
-            pip \
 
 ##############################################################################
 # Install Node & NPM
