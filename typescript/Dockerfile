@@ -88,15 +88,9 @@ RUN set -x \
 ##############################################################################
 
     && apk del \
-        curl \
-        gcc \
-        g++ \
         gnupg \
         linux-headers \
-        make \
         paxctl \
-        python \
-        tar \
 
     && find ${NODE_PREFIX}/lib/node_modules/npm -name test -o -name .bin -type d | xargs rm -rf \
 
