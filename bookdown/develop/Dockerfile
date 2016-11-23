@@ -1,4 +1,4 @@
-FROM composer/composer:master
+FROM composer/composer:master-alpine
 MAINTAINER Sandro Keil <docker@sandro-keil.de>
 
 ENV TEMPLATES_PATH=/root/composer/vendor/tobiju/bookdown-bootswatch-templates/templates \
