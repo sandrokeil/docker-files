@@ -1,12 +1,12 @@
 FROM composer/composer:master-alpine
 MAINTAINER Sandro Keil <docker@sandro-keil.de>
 
-ENV TEMPLATES_PATH=/root/composer/vendor/tobiju/bookdown-bootswatch-templates/templates \
-    VENDOR_PATH=/root/composer/vendor/
+ENV TEMPLATES_PATH=/composer/vendor/tobiju/bookdown-bootswatch-templates/templates \
+    VENDOR_PATH=/composer/vendor/
 
-COPY composer.json /root/composer/
-COPY docker-entrypoint.sh /
+COPY composer.json /composer/
 
 RUN composer global update
 
+COPY docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
