@@ -10,7 +10,10 @@ RUN apk add --no-cache --virtual .persistent-deps \
         python \
         py-pip \
     # Install node packages
-    && npm install --silent -g \
+    && npm install --silent --save-dev -g \
+        babel \
+        babel-cli \
+        gulp-babel \
         gulp-cli \
         bower \
         typescript \
