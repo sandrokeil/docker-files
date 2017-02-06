@@ -3,6 +3,7 @@ This Docker image contains:
 
 * nodejs > 7.1
 * npm > 3.10
+* babel-cli > 6.22
 * gulp-cli > 1.2
 * bower > 1.8
 * typescript > 2.1
