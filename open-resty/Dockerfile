@@ -1,5 +1,4 @@
 FROM openresty/openresty:alpine-fat
-MAINTAINER Sandro Keil <docker@sandro-keil.de>
 
 RUN apk add --no-cache --virtual .run-deps \
     bash \
@@ -9,7 +8,9 @@ RUN apk add --no-cache --virtual .run-deps \
     sed \
     openssl \
     && mkdir -p /etc/resty-auto-ssl \
-    && chown nobody /etc/resty-auto-ssl
+    && addgroup -S nginx \
+    && adduser -D -S -h /var/cache/nginx -s /sbin/nologin -G nginx nginx \
+    && chown nginx /etc/resty-auto-ssl
 
 RUN apk add --no-cache --virtual .build-deps \
         gcc \
