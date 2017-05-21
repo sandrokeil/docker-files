@@ -1,4 +1,4 @@
-FROM node:7.1.0-alpine
+FROM node:7.10-alpine
 
 RUN apk add --no-cache --virtual .persistent-deps \
         curl \
@@ -11,14 +11,8 @@ RUN apk add --no-cache --virtual .persistent-deps \
         py-pip \
     # Install node packages
     && npm install --silent --save-dev -g \
-        babel \
-        babel-cli \
-        gulp-babel \
         gulp-cli \
-        bower \
-        typescript \
-        typings \
-        webpack
+        typescript
 
 # Set up the application directory
 VOLUME ["/app"]
