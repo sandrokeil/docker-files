@@ -1,4 +1,4 @@
-FROM node:7.10-alpine
+FROM node:8.1.2-alpine
 
 RUN apk add --no-cache --virtual .persistent-deps \
         curl \
