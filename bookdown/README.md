@@ -17,7 +17,7 @@ $ docker run -it --rm -v $(pwd):/app sandrokeil/bookdown:develop doc/bookdown.js
 
 ## Styles
 This Docker image comes with Bootswatch.com styles and Prism syntax highlighting powered by an awesome 
-Bookdown.io template library on GitHub ([tobiju/bookdown-bootswatch-templates](https://github.com/tobiju/bookdown-bootswatch-templates)).
+Bookdown.io template library on GitHub ([https://github.com/bookdown/Bookdown.Themes](https://github.com/bookdown/Bookdown.Themes)).
 
 Choose your preferred style by setting the `CSS_BOOTSWATCH` and `CSS_PRISM` environment variable before generating the book. 
 The default Bootswatch style is `cerulean` and for Prism `ghcolors`. See the example below how to use another style.
