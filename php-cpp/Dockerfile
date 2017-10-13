@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -y \
         libssl-dev \
         libcurl4-openssl-dev \
         libboost-system-dev \
-        libboost-thread-dev
+        libboost-thread-dev \
         ca-certificates \
         curl \
         libedit2 \
