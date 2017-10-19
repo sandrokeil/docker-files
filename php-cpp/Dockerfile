@@ -12,6 +12,7 @@ ENV PHPIZE_DEPS \
         libc-dev \
         libpcre3-dev \
         make \
+        cmake \
         git \
         pkg-config \
         re2c
