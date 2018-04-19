@@ -16,7 +16,7 @@ render () {
   cd /results
 
   echo "Using $RES $DEPTH $FRAMES $SEC_PER_DAY"
-  screen -dmS recording xvfb-run -a -s "-screen 0 ${RES}x${DEPTH}" gource combined.txt -r 60 --auto-skip-seconds 1 --max-file-lag 0.1 --stop-at-end "-$RES" --user-image-dir /avatars/ --highlight-all-users -s 0.5 --seconds-per-day ${SEC_PER_DAY} --hide ${HIDE} ${GOURCE_ARGS} -o gource.ppm
+  screen -dmS recording xvfb-run -a -s "-screen 0 ${RES}x${DEPTH}" gource combined.txt -r 60 --auto-skip-seconds 1 --max-file-lag 0.1 --stop-at-end "-$RES" --user-image-dir /avatars/ --highlight-all-users -s 0.5 --seconds-per-day ${SEC_PER_DAY} --hide ${HIDE} ${GOURCE_ARGS} -o /results/gource.ppm
 
   # This hack is needed because gource process doesn't stop
   lastsize="0"
