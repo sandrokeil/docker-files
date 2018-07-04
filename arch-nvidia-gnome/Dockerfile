@@ -1,0 +1,24 @@
+FROM base/archlinux:2018.06.01
+
+RUN pacman-key --init && \
+    pacman -Sy --noconfirm archlinux-keyring && \
+    pacman -Syu --noconfirm nvidia gnome && \
+    pacman -Scc --noconfirm
+
+RUN echo LANG=en_US.UTF-8 > /etc/locale.conf \
+    && sed -i "s/#de_DE/de_DE/g" /etc/locale.gen \
+    && sed -i "s/#en_US.UTF/en_US.UTF/g" /etc/locale.gen \
+    && locale-gen \
+    && echo KEYMAP=de-latin1 > /etc/vconsole.conf \
+    && echo FONT=lat9w-16 >> /etc/vconsole.conf
+
+# startscript to copy dotfiles from /etc/skel
+# runs either CMD or image command from docker run
+RUN echo '#! /bin/sh\n\
+[ -e "$HOME/.config" ] || cp -R /etc/skel/. $HOME/ \n\
+exec $* \n\
+' > /usr/local/bin/start
+RUN chmod +x /usr/local/bin/start
+
+ENTRYPOINT ["/usr/local/bin/start"]
+CMD ["gnome-session"]
