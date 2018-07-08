@@ -2,7 +2,7 @@ FROM base/archlinux:2018.06.01
 
 RUN pacman-key --init && \
     pacman -Sy --noconfirm archlinux-keyring && \
-    pacman -Syu --noconfirm gnome-shell ibus gnome-keyring gnome-control-center gnome-tweak-tool ttf-dejavu kbd && \
+    pacman -Syu --noconfirm gnome-shell ibus gnome-control-center gnome-tweak-tool ttf-dejavu kbd && \
     pacman -Scc --noconfirm
 
 RUN echo LANG=en_US.UTF-8 > /etc/locale.conf \
@@ -17,4 +17,5 @@ RUN echo LANG=en_US.UTF-8 > /etc/locale.conf \
 COPY start /usr/local/bin/start
 
 ENTRYPOINT ["/usr/local/bin/start"]
-CMD ["dbus-run-session", "gnome-session"]
+CMD ["gnome-session"]
+#CMD ["dbus-run-session", "gnome-session"]
