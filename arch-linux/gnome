@@ -2,7 +2,7 @@ FROM base/archlinux:2018.06.01
 
 RUN pacman-key --init && \
     pacman -Sy --noconfirm archlinux-keyring && \
-    pacman -Syu --noconfirm nvidia gnome && \
+    pacman -Syu --noconfirm gnome-shell ibus gnome-keyring gnome-control-center gnome-tweak-tool ttf-dejavu kbd && \
     pacman -Scc --noconfirm
 
 RUN echo LANG=en_US.UTF-8 > /etc/locale.conf \
@@ -14,11 +14,7 @@ RUN echo LANG=en_US.UTF-8 > /etc/locale.conf \
 
 # startscript to copy dotfiles from /etc/skel
 # runs either CMD or image command from docker run
-RUN echo '#! /bin/sh\n\
-[ -e "$HOME/.config" ] || cp -R /etc/skel/. $HOME/ \n\
-exec $* \n\
-' > /usr/local/bin/start
-RUN chmod +x /usr/local/bin/start
+COPY start /usr/local/bin/start
 
 ENTRYPOINT ["/usr/local/bin/start"]
-CMD ["gnome-session"]
+CMD ["dbus-run-session", "gnome-session"]

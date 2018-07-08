@@ -1,0 +1,3 @@
+#! /bin/sh
+[ -n "$HOME" ] && [ ! -e "$HOME/.config" ] && cp -R /etc/skel/. $HOME/
+exec $*
