@@ -5,4 +5,4 @@ RUN pacman-key --init && \
     pacman -Syu --noconfirm chromium && \
     pacman -Scc --noconfirm
 
-ENTRYPOINT ["/usr/local/bin/start"]
+CMD ["/usr/bin/chromium", "--no-sandbox"]
