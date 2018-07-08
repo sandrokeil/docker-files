@@ -1,0 +1,8 @@
+FROM sandrokeil/archlinux:2018.06.01
+
+RUN pacman-key --init && \
+    pacman -Sy --noconfirm archlinux-keyring && \
+    pacman -Syu --noconfirm chromium && \
+    pacman -Scc --noconfirm
+
+ENTRYPOINT ["/usr/local/bin/start"]
