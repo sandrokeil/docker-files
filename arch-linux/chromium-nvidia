@@ -1,6 +1,7 @@
-FROM sandrokeil/arch-gnome:2018.06.01
+FROM sandrokeil/arch-chromium:2018.06.01
 
 RUN pacman-key --init && \
     pacman -Sy --noconfirm archlinux-keyring && \
     pacman -Syu --noconfirm nvidia nvidia-utils coreutils && \
     pacman -Scc --noconfirm
+
