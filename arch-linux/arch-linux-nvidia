@@ -2,4 +2,4 @@ FROM sandrokeil/archlinux:2018.06.01
 
 RUN pacman-key --init && \
     pacman -Sy --noconfirm archlinux-keyring && \
-    pacman -Syu --noconfirm nvidia nvidia-utils coreutils fakeroot binutils
+    pacman -Syu --noconfirm nvidia nvidia-utils cuda coreutils fakeroot binutils
