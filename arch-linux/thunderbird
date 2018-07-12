@@ -1,0 +1,6 @@
+FROM sandrokeil/archlinux
+
+RUN pacman -Syu --noconfirm thunderbird \
+    && pacman -Scc --noconfirm
+
+CMD ["thunderbird"]

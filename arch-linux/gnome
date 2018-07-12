@@ -1,4 +1,4 @@
-FROM sandrokeil/archlinux:2018.06.01
+FROM sandrokeil/archlinux
 
 RUN pacman-key --init && \
     pacman -Sy --noconfirm archlinux-keyring && \

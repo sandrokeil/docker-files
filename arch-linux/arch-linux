@@ -1,9 +1,8 @@
-FROM base/archlinux:2018.06.01
+FROM base/archlinux:latest
 
 RUN pacman-key --init && \
     pacman -Sy --noconfirm archlinux-keyring && \
-    pacman -Syu --noconfirm ibus pulseaudio ttf-dejavu kbd && \
-    pacman -Scc --noconfirm
+    pacman -Syu --noconfirm ibus pulseaudio ttf-dejavu kbd coreutils fakeroot binutils
 
 RUN echo LANG=en_US.UTF-8 > /etc/locale.conf \
     && sed -i "s/#de_DE/de_DE/g" /etc/locale.gen \

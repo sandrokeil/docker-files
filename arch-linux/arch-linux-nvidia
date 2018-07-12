@@ -1,5 +1,6 @@
-FROM sandrokeil/archlinux:2018.06.01
+FROM sandrokeil/archlinux
 
-RUN pacman-key --init && \
-    pacman -Sy --noconfirm archlinux-keyring && \
-    pacman -Syu --noconfirm nvidia nvidia-utils cuda coreutils fakeroot binutils
+ENV NVIDIA_VISIBLE_DEVICES all
+ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
+
+RUN pacman -Syu --noconfirm nvidia nvidia-utils cuda nvidia-settings opencl-nvidia ocl-icd
