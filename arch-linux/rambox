@@ -1,13 +1,14 @@
-FROM sandrokeil/archlinux
-
-COPY arch-aur-install /usr/bin
-
-RUN pacman -Syu --needed --noconfirm sudo \
-    && useradd builduser -m \
-    && passwd -d builduser \
-    && printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers \
-    && sudo -u builduser bash -c 'cd ~ && mkdir tmp && cd tmp && arch-aur-install https://aur.archlinux.org/cgit/aur.git/snapshot/rambox.tar.gz' \
-    && userdel -r builduser \
-    && pacman -Scc --noconfirm
-
+FROM sandrokeil/archlinux 
+  
+COPY arch-aur-install /usr/bin 
+ 
+RUN pacman -Syu --needed --noconfirm sudo \ 
+    && useradd builduser -m \ 
+    && passwd -d builduser \ 
+    && printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers \ 
+    && sudo -u builduser bash -c 'cd ~ && mkdir tmp && cd tmp && arch-aur-install https://aur.archlinux.org/cgit/aur.git/snapshot/sencha-cmd-6.tar.gz' \ 
+    && sudo -u builduser bash -c 'cd ~ && rm -rf tmp/* && cd tmp && arch-aur-install https://aur.archlinux.org/cgit/aur.git/snapshot/rambox.tar.gz' \ 
+    && userdel -r builduser \ 
+    && pacman -Scc --noconfirm 
+ 
 CMD ["rambox"]
