@@ -1,0 +1,2 @@
+    && sudo -u builduser bash -c 'cd ~ && mkdir tmp && cd tmp && arch-aur-install https://aur.archlinux.org/cgit/aur.git/snapshot/sencha-cmd-6.tar.gz' \
+    && sudo -u builduser bash -c 'cd ~ && rm -rf tmp/* && cd tmp && arch-aur-install https://aur.archlinux.org/cgit/aur.git/snapshot/rambox.tar.gz'
