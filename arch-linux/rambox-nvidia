@@ -10,4 +10,4 @@ RUN pacman -Syu --needed --noconfirm sudo \
     && sudo -u builduser bash -c 'cd ~ && rm -rf tmp/* && cd tmp && arch-aur-install https://aur.archlinux.org/cgit/aur.git/snapshot/rambox.tar.gz' \
     && userdel -r builduser \
     && pacman -Scc --noconfirm
-CMD ["rambox"]
+ENTRYPOINT ["rambox"]

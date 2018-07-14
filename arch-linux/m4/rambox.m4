@@ -6,4 +6,4 @@ include(`i-builduser.m4') \
 include(`i-rambox.m4') \
 include(`d-builduser.m4')
 
-CMD ["rambox"]
+ENTRYPOINT ["rambox"]

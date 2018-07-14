@@ -3,4 +3,4 @@
 FROM sandrokeil/archlinux
 RUN pacman -Syu --noconfirm chromium \
     && pacman -Scc --noconfirm
-CMD ["/usr/bin/chromium"]
+ENTRYPOINT ["/usr/bin/chromium"]

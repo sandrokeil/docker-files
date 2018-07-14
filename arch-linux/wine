@@ -6,4 +6,4 @@ RUN echo "[multilib]" >> /etc/pacman.conf \
     && pacman -Sl multilib \
     && pacman -Syu --noconfirm unzip wine-staging winetricks playonlinux wine_gecko wine-mono lib32-libpulse lib32-nvidia-utils \
     && pacman -Scc --noconfirm
-CMD ["playonlinux"]
+ENTRYPOINT ["playonlinux"]
