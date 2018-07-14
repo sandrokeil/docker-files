@@ -1,2 +1,2 @@
-RUN pacman -Syu --noconfirm git \
+RUN pacman -Syu --noconfirm git ssh \
     && pacman -Scc --noconfirm
