@@ -19,6 +19,14 @@ docker-build:
 		docker build -q -t sandrokeil/archlinux-nvidia:`echo $${i##*/} | sed "s/.m4//" | sed "s/-nvidia//"` -f `echo $${i##*/} | sed "s/.m4//"` . ;\
 	done
 
+docker-build-one:
+	docker pull sandrokeil/archlinux
+	docker build -t sandrokeil/archlinux:`echo $${image##*/} | sed "s/.m4//"` -f `echo $${image##*/} | sed "s/.m4//"` .
+
+docker-build-one-nvidia:
+	docker pull sandrokeil/archlinux-nvidia
+	docker build -t sandrokeil/archlinux-nvidia:`echo $${image##*/} | sed "s/.m4//" | sed "s/-nvidia//"` -f `echo $${image##*/} | sed "s/.m4//"` .
+
 docker-push:
 	for i in $(filter-out %nvidia.m4,$(LIST)); do \
 		docker push sandrokeil/archlinux:`echo $${i##*/} | sed "s/.m4//"` ;\
