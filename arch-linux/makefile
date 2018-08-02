@@ -9,9 +9,18 @@ dockerfiles:
 		m4 -I $(dir)/inc $(dir)"$$i" | awk 'NF' > `echo $${i##*/} | sed "s/.m4//"` ; \
 	done
 
+docker-build-base:
+	docker pull base/archlinux:latest
+	docker build -q -t sandrokeil/archlinux:latest -f arch-linux . ;\
+	docker build -q -t sandrokeil/archlinux-nvidia:latest -f arch-linux-nvidia . ;\
+
+docker-push-base:
+	docker push sandrokeil/archlinux:latest ;\
+	docker push sandrokeil/archlinux-nvidia:latest ;\
+
 docker-build:
-	docker pull sandrokeil/archlinux
-	docker pull sandrokeil/archlinux-nvidia
+	docker pull sandrokeil/archlinux:latest
+	docker pull sandrokeil/archlinux-nvidia:latest
 	for i in $(filter-out %nvidia.m4,$(LIST)); do \
 		docker build -q -t sandrokeil/archlinux:`echo $${i##*/} | sed "s/.m4//"` -f `echo $${i##*/} | sed "s/.m4//"` . ;\
 	done

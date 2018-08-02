@@ -6,9 +6,7 @@ RUN pacman -Syu --needed --noconfirm sudo patch \
     && useradd builduser -m \
     && passwd -d builduser \
     && printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers \
-    && sudo -u builduser bash -c 'cd ~ && mkdir tmp && cd tmp && arch-aur-install https://aur.archlinux.org/cgit/aur.git/snapshot/robo3t-bin.tar.gz' \
+    && sudo -u builduser bash -c 'cd ~ && mkdir tmp && cd tmp && arch-aur-install https://aur.archlinux.org/cgit/aur.git/snapshot/dropbox.tar.gz' \
     && userdel -r builduser \
     && pacman -Scc --noconfirm
-RUN pacman -Syu --noconfirm openssl-1.0 \
-    && pacman -Scc --noconfirm
-ENTRYPOINT ["robo3t"]
+ENTRYPOINT ["dropbox"]
