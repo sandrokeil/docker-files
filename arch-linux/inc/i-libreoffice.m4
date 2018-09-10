@@ -1,3 +1,3 @@
-RUN pacman -Syu --noconfirm libreoffice-still \
+RUN pacman -Sy --noconfirm libreoffice-still \
     && pacman -Scc --noconfirm
 

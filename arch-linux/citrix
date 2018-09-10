@@ -5,7 +5,7 @@ COPY arch-aur-install /usr/bin
 # add quotes to c_rehash
 RUN sed -i 's#my $dir = /etc/ssl;#my $dir = "/etc/ssl";#' /usr/sbin/c_rehash \
     && sed -i 's#my $prefix = /usr;#my $dir = my $prefix = "/usr";#' /usr/sbin/c_rehash
-RUN pacman -Syu --needed --noconfirm sudo patch \
+RUN pacman -Sy --needed --noconfirm sudo patch \
     && useradd builduser -m \
     && passwd -d builduser \
     && printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers \

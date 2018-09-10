@@ -5,8 +5,8 @@ COPY arch-aur-install /usr/bin
 RUN echo "[multilib]" >> /etc/pacman.conf \
     && echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf \
     && pacman -Sl multilib \
-    && pacman -Syu --noconfirm gconf gtk2 libnotify libxtst nss xdg-utils libxss
-RUN pacman -Syu --needed --noconfirm sudo patch \
+    && pacman -Sy --noconfirm gconf gtk2 libnotify libxtst nss xdg-utils libxss
+RUN pacman -Sy --needed --noconfirm sudo patch \
     && useradd builduser -m \
     && passwd -d builduser \
     && printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers \

@@ -1,2 +1,2 @@
-RUN pacman -Syu --noconfirm chromium \
+RUN pacman -Sy --noconfirm chromium guvcview \
     && pacman -Scc --noconfirm

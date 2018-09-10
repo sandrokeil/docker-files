@@ -6,7 +6,7 @@ include(`i-builduser.m4') \
 include(`i-robo3t.m4') \
 include(`d-builduser.m4')
 
-RUN pacman -Syu --noconfirm openssl-1.0 \
+RUN pacman -Sy --noconfirm openssl-1.0 \
     && pacman -Scc --noconfirm
 
 ENTRYPOINT ["robo3t"]

@@ -5,8 +5,8 @@ COPY arch-aur-install /usr/bin
 RUN echo "[multilib]" >> /etc/pacman.conf \
     && echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf \
     && pacman -Sl multilib \
-    && pacman -Syu --noconfirm xdg-utils libxss lib32-gconf lib32-nss
-RUN pacman -Syu --needed --noconfirm sudo patch \
+    && pacman -Sy --noconfirm xdg-utils libxss lib32-gconf lib32-nss
+RUN pacman -Sy --needed --noconfirm sudo patch \
     && useradd builduser -m \
     && passwd -d builduser \
     && printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers \

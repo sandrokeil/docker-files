@@ -1,6 +1,6 @@
 include(`arch-nvidia.m4')
 
-RUN pacman -Syu --noconfirm ffmpeg imagemagick mencoder \
+RUN pacman -Sy --noconfirm ffmpeg imagemagick mencoder \
     && pacman -Scc --noconfirm \
     && curl -o /usr/bin/gopro -D - -L -s https://raw.githubusercontent.com/KonradIT/gopro-linux/master/gopro \
     && chmod +x /usr/bin/gopro
