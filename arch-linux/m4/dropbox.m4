@@ -1,9 +1,9 @@
 include(`arch.m4')
 
-COPY arch-aur-install /usr/bin
+RUN cd /opt && curl -L https://www.dropbox.com/download?plat=lnx.x86_64 | tar xzf - \
+    && curl -L https://www.dropbox.com/download?dl=packages/dropbox.py --output /opt/dropbox.py \
+    && chmod +x /opt/dropbox.py
 
-include(`i-builduser.m4') \
-    && sudo -u builduser bash -c 'cd ~ && mkdir tmp && cd tmp && arch-aur-install https://aur.archlinux.org/cgit/aur.git/snapshot/dropbox.tar.gz' \
-include(`d-builduser.m4')
-
-ENTRYPOINT ["dropbox"]
+#ENTRYPOINT ["python2", "/opt/dropbox.py"]
+#CMD ["start"]
+ENTRYPOINT ["/opt/.dropbox-dist/dropboxd"]

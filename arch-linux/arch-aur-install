@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-URL="$1"
-shift
-
-curl -L ${URL} | tar xzf - --strip-components=1 -C $(pwd) && makepkg -si --noconfirm $@
-

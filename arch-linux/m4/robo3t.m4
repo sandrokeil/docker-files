@@ -1,12 +1,10 @@
 include(`arch.m4')
 
-COPY arch-aur-install /usr/bin
+RUN pacman -Sy --noconfirm openssl-1.0
 
-include(`i-builduser.m4') \
-include(`i-robo3t.m4') \
-include(`d-builduser.m4')
-
-RUN pacman -Sy --noconfirm openssl-1.0 \
-    && pacman -Scc --noconfirm
+AUR_ADD_USER() \
+    AUR_DOWNLOAD(tmp, https://aur.archlinux.org/cgit/aur.git/snapshot/robo3t-bin.tar.gz) \
+    MAKEPKG(tmp) \
+AUR_DEL_USER()
 
 ENTRYPOINT ["robo3t"]
