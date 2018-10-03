@@ -5,11 +5,16 @@ COPY arch-aur-install /usr/bin
 # add quotes to c_rehash
 RUN sed -i 's#my $dir = /etc/ssl;#my $dir = "/etc/ssl";#' /usr/sbin/c_rehash \
     && sed -i 's#my $prefix = /usr;#my $dir = my $prefix = "/usr";#' /usr/sbin/c_rehash
-RUN pacman -Sy --needed --noconfirm sudo patch \
+RUN pacman -Sy --noconfirm sudo patch gzip git gcc make pkg-config diffutils file \
     && useradd builduser -m \
     && passwd -d builduser \
-    && printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers \
-    && sudo -u builduser bash -c 'cd ~ && mkdir tmp && cd tmp && arch-aur-install https://aur.archlinux.org/cgit/aur.git/snapshot/icaclient.tar.gz' \
+    && printf "builduser ALL=(ALL) ALL\n" | tee -a /etc/sudoers \
+    && sudo -u builduser bash -c 'gpg --keyserver=keyserver.ubuntu.com --recv-keys 860B7FBB32F8119D' \
+    && sudo -u builduser bash -c "mkdir -p ~/tmp && curl -L https://aur.archlinux.org/cgit/aur.git/snapshot/libidn-133-compat.tar.gz | tar xzf - --strip-components=1 -C ~/tmp" \
+    && sudo -u builduser bash -c "cd ~/tmp && makepkg -si --noconfirm " \
+    && sudo -u builduser bash -c "mkdir -p ~/tmp2 && curl -L https://aur.archlinux.org/cgit/aur.git/snapshot/icaclient.tar.gz | tar xzf - --strip-components=1 -C ~/tmp2" \
+    && sudo -u builduser bash -c "cd ~/tmp2 && makepkg -si --noconfirm " \
     && userdel -r builduser \
-    && pacman -Scc --noconfirm
+    && pacman -Rs --noconfirm git gcc make \
+    && pacman -Scc --noconfirm 
 ENTRYPOINT ["/opt/Citrix/ICAClient/wfica"]

@@ -3,4 +3,4 @@
 FROM sandrokeil/archlinux:latest
 RUN pacman -Sy --noconfirm gedit \
     && pacman -Scc --noconfirm
-CMD ["gedit"]
+ENTRYPOINT ["gedit"]
