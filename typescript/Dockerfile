@@ -1,4 +1,4 @@
-FROM node:8.1.2-alpine
+FROM node:8-alpine
 
 RUN apk add --no-cache --virtual .persistent-deps \
         curl \
@@ -11,7 +11,6 @@ RUN apk add --no-cache --virtual .persistent-deps \
         py-pip \
     # Install node packages
     && npm install --silent --save-dev -g \
-        gulp-cli \
         typescript
 
 # Set up the application directory

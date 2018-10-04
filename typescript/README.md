@@ -5,7 +5,6 @@ This Docker image contains:
 * npm > 4.2
 * yarn > 0.24
 * typescript > 2.4
-* gulp-cli > 3.9
 
 Run the following command from the root of your project and use one of the commands:
 
