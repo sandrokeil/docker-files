@@ -4,18 +4,11 @@ FROM sandrokeil/archlinux-nvidia:latest
 RUN echo "[multilib]" >> /etc/pacman.conf \
     && echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf \
     && pacman -Sly multilib \
-    && pacman -Sy --noconfirm xdg-utils libxss lib32-gconf lib32-nss
-RUN pacman -Sy --noconfirm sudo patch gzip git gcc make pkg-config diffutils file \
-    && useradd builduser -m \
-    && passwd -d builduser \
-    && printf "builduser ALL=(ALL) ALL\n" | tee -a /etc/sudoers \
-    && sudo -u builduser bash -c "mkdir -p ~/tmp && curl -L https://aur.archlinux.org/cgit/aur.git/snapshot/ledger-live-bin.tar.gz | tar xzf - --strip-components=1 -C ~/tmp" \
-    && sed -i "s/pkgver=1.1.11/pkgver=1.2.0/g" /home/builduser/tmp/PKGBUILD \
-    && sed -i "s/2e55f7b0daa0eaa4d510134d440ec5ed0e78bdd55d7423b6368a8e17033f99e11e114e429760b3c08a33690718c899a26c4946cb5f59c34b1b5e5fdbb4264f6c/e4c14249e6767011bec97d0cf56dc3138af9b99e68e61d46d1b8f8a0aa017ea569385832ed422d3db7259822849084a318bbb6cb5fd2c0035b94a14bcfd46dc5/g" /home/builduser/tmp/PKGBUILD \
-    && sudo -u builduser bash -c "cd ~/tmp && makepkg -si --noconfirm " \
-    && userdel -r builduser \
-    && pacman -Rs --noconfirm git gcc make \
-    && pacman -Scc --noconfirm  \
+    && pacman -Sy --noconfirm xdg-utils libxss lib32-gconf lib32-nss fuse2
+ENV LEDGER_VERSION 1.2.0
+RUN mkdir -p /opt \
+    && curl -L https://github.com/LedgerHQ/ledger-live-desktop/releases/download/v${LEDGER_VERSION}/ledger-live-desktop-${LEDGER_VERSION}-linux-x86_64.AppImage --output /opt/ledger-live.AppImage \
+    && chmod +x /opt/ledger-live.AppImage \
     && echo 'SUBSYSTEMS=="usb", ATTRS{idVendor}=="2581", ATTRS{idProduct}=="1b7c", MODE="0660", GROUP="users",  TAG+="uaccess", TAG+="udev-acl"' > /etc/udev/rules.d/20-hw1.rules \
     && echo 'SUBSYSTEMS=="usb", ATTRS{idVendor}=="2581", ATTRS{idProduct}=="2b7c", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"' >> /etc/udev/rules.d/20-hw1.rules \
     && echo 'SUBSYSTEMS=="usb", ATTRS{idVendor}=="2581", ATTRS{idProduct}=="3b7c", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"' >> /etc/udev/rules.d/20-hw1.rules \
@@ -26,4 +19,4 @@ RUN pacman -Sy --noconfirm sudo patch gzip git gcc make pkg-config diffutils fil
     && echo 'SUBSYSTEMS=="usb", ATTRS{idVendor}=="2c97", ATTRS{idProduct}=="0001", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl”' >> /etc/udev/rules.d/20-hw1.rules \
     && echo 'KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="users", ATTRS{idVendor}=="2c97"' >> /etc/udev/rules.d/20-hw1.rules \
     && echo 'KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="users", ATTRS{idVendor}=="2581"' >> /etc/udev/rules.d/20-hw1.rules
-ENTRYPOINT ["ledger-live-desktop"]
+ENTRYPOINT ["/opt/ledger-live.AppImage"]
