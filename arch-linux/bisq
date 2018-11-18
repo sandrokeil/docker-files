@@ -9,6 +9,7 @@ RUN pacman -Sy --noconfirm sudo patch gzip git gcc make pkg-config diffutils fil
     && useradd builduser -m \
     && passwd -d builduser \
     && printf "builduser ALL=(ALL) ALL\n" | tee -a /etc/sudoers \
+    && sudo -u builduser bash -c 'gpg --keyserver=keyserver.ubuntu.com --recv-keys CD5DC1C529CDFD3B' \
     && sudo -u builduser bash -c "mkdir -p ~/tmp && curl -L https://aur.archlinux.org/cgit/aur.git/snapshot/bisq-bin.tar.gz | tar xzf - --strip-components=1 -C ~/tmp" \
     && sudo -u builduser bash -c "cd ~/tmp && makepkg -si --noconfirm " \
     && userdel -r builduser \

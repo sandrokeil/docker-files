@@ -1,2 +1,2 @@
-RUN pacman -Sy --noconfirm git openssh vim \
+RUN pacman -Sy --noconfirm git openssh vim gnome-keyring libsecret \
     && pacman -Scc --noconfirm

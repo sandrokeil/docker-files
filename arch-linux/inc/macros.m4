@@ -3,7 +3,7 @@ define(`DONT_CHANGE',
 # Change it in m4 folder')
 
 define(`DOWNLOAD',
-`RUN mkdir -p $1 && curl -L https://download.jetbrains.com/webide/PhpStorm-2018.2.4.tar.gz | tar xzf - --strip-components=1 -C $1')
+`RUN mkdir -p $1 && curl -L $2 | tar xzf - --strip-components=1 -C $1')
 
 define(`AUR_DOWNLOAD',
 `&& sudo -u builduser bash -c "mkdir -p ~/$1 && curl -L $2 | tar xzf - --strip-components=1 -C ~/$1"')
