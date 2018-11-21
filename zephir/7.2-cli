@@ -1,0 +1,39 @@
+FROM php:7.2-cli-alpine3.8
+
+RUN buildDeps=' \
+    bash \
+    git \
+    g++ \
+    make \
+    cmake \
+    libstdc++ \
+    libc-dev \
+    pcre-dev \
+    autoconf \
+    re2c \
+    file \
+    sudo \
+    ' \
+    && apk add --no-cache --update $buildDeps \
+    && docker-php-source extract
+
+ENV PHP_ZEPHIR_PARSER v1.1.3
+
+RUN git clone --branch ${PHP_ZEPHIR_PARSER} https://github.com/phalcon/php-zephir-parser.git /tmp/php-zephir-parser \
+    && cd /tmp/php-zephir-parser \
+    && phpize && ./configure \
+    && make -j4 \
+    && make install \
+    && rm -rf /tmp/* \
+    && echo "extension=zephir_parser.so" > /usr/local/etc/php/conf.d/zephir.ini
+
+ENV PHP_ZEPHIR 0.11.6
+
+RUN curl -L https://github.com/phalcon/zephir/releases/download/${PHP_ZEPHIR}/zephir.phar --output /tmp/zephir.phar
+
+WORKDIR /app
+
+# Set up the application directory
+VOLUME ["/app"]
+ENTRYPOINT ["php", "/tmp/zephir.phar"]
+CMD ["list"]
