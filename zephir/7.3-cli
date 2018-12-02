@@ -27,7 +27,7 @@ RUN git clone --branch ${PHP_ZEPHIR_PARSER} https://github.com/phalcon/php-zephi
     && rm -rf /tmp/* \
     && echo "extension=zephir_parser.so" > /usr/local/etc/php/conf.d/zephir.ini
 
-ENV PHP_ZEPHIR 0.11.6
+ENV PHP_ZEPHIR 0.11.8
 
 RUN curl -L https://github.com/phalcon/zephir/releases/download/${PHP_ZEPHIR}/zephir.phar --output /tmp/zephir.phar
 
