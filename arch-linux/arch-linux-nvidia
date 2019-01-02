@@ -3,4 +3,5 @@ FROM sandrokeil/archlinux:latest
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 
-RUN pacman -Sy --noconfirm nvidia nvidia-utils cuda nvidia-settings opencl-nvidia ocl-icd
+RUN pacman -Sy --noconfirm nvidia nvidia-utils cuda nvidia-settings opencl-nvidia ocl-icd \
+    && pacman -Scc --noconfirm

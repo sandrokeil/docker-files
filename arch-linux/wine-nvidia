@@ -25,7 +25,7 @@ RUN echo "[multilib]" >> /etc/pacman.conf \
         lib32-gst-plugins-good \
         lib32-nvidia-libgl \
         lib32-nvidia-utils
-RUN pacman -Sy --noconfirm sudo patch gzip git gcc make pkg-config diffutils file \
+RUN pacman -Sy --noconfirm sudo fakeroot patch gzip git gcc make pkg-config diffutils file \
     && useradd builduser -m \
     && passwd -d builduser \
     && printf "builduser ALL=(ALL) ALL\n" | tee -a /etc/sudoers \

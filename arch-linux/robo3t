@@ -2,7 +2,7 @@
 # Change it in m4 folder
 FROM sandrokeil/archlinux:latest
 RUN pacman -Sy --noconfirm openssl-1.0
-RUN pacman -Sy --noconfirm sudo patch gzip git gcc make pkg-config diffutils file \
+RUN pacman -Sy --noconfirm sudo fakeroot patch gzip git gcc make pkg-config diffutils file \
     && useradd builduser -m \
     && passwd -d builduser \
     && printf "builduser ALL=(ALL) ALL\n" | tee -a /etc/sudoers \

@@ -5,7 +5,7 @@ RUN echo "[multilib]" >> /etc/pacman.conf \
     && echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf \
     && pacman -Sly multilib \
     && pacman -Sy --noconfirm gconf gtk2 libnotify libxtst nss xdg-utils libxss
-RUN pacman -Sy --noconfirm sudo patch gzip git gcc make pkg-config diffutils file \
+RUN pacman -Sy --noconfirm sudo fakeroot patch gzip git gcc make pkg-config diffutils file \
     && useradd builduser -m \
     && passwd -d builduser \
     && printf "builduser ALL=(ALL) ALL\n" | tee -a /etc/sudoers \

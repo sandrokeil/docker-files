@@ -36,6 +36,16 @@ command-list:
 		echo "docker build --squash -q -t sandrokeil/archlinux-nvidia:`echo $${i##*/} | sed 's/.m4//' | sed 's/-nvidia//'` -f `echo $${i##*/} | sed 's/.m4//'` ."  >> commands.txt ;\
 	done
 
+push-list:
+	echo "#!/usr/bin/env bash" > push.sh
+	chmod +x push.sh
+	for i in $(filter-out %nvidia.m4,$(LIST)); do \
+		echo "docker push sandrokeil/archlinux:`echo $${i##*/} | sed 's/.m4//'` -f `echo $${i##*/} | sed 's/.m4//'` ." >> push.sh ;\
+	done
+	for i in $(filter %-nvidia.m4,$(LIST)); do \
+		echo "docker push sandrokeil/archlinux-nvidia:`echo $${i##*/} | sed 's/.m4//' | sed 's/-nvidia//'` -f `echo $${i##*/} | sed 's/.m4//'` ."  >> push.sh ;\
+	done
+
 parallel-build:
 	parallel --jobs 24 < commands.txt
 
