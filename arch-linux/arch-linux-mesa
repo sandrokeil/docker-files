@@ -1,0 +1,11 @@
+FROM sandrokeil/archlinux:latest
+
+RUN pacman-key --init \
+    && pacman -Sy --noconfirm archlinux-keyring \
+    && pacman -Syu --noconfirm \
+        mesa \
+        mesa-vdpau \
+        ocl-icd \
+        opencl-mesa \
+        libvdpau-va-gl \
+    && pacman -Scc --noconfirm

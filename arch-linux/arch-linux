@@ -18,7 +18,6 @@ RUN pacman-key --init \
         kbd \
         coreutils \
         binutils \
-        mesa \
     && pacman -Scc --noconfirm \
     && echo LANG=en_US.UTF-8 > /etc/locale.conf \
     && sed -i "s/#de_DE/de_DE/g" /etc/locale.gen \
