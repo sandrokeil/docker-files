@@ -4,7 +4,7 @@ FROM sandrokeil/archlinux:latest
 # add quotes to c_rehash
 RUN sed -i 's#my $dir = /etc/ssl;#my $dir = "/etc/ssl";#' /usr/sbin/c_rehash \
     && sed -i 's#my $prefix = /usr;#my $dir = my $prefix = "/usr";#' /usr/sbin/c_rehash
-RUN pacman -Sy --noconfirm sudo fakeroot patch gzip git gcc make pkg-config diffutils file \
+RUN pacman -Sy --noconfirm sudo fakeroot patch gzip git gcc make pkg-config diffutils automake autoconf file \
     && useradd builduser -m \
     && passwd -d builduser \
     && printf "builduser ALL=(ALL) ALL\n" | tee -a /etc/sudoers \
@@ -12,6 +12,6 @@ RUN pacman -Sy --noconfirm sudo fakeroot patch gzip git gcc make pkg-config diff
     && sudo -u builduser bash -c "mkdir -p ~/tmp && curl -L https://aur.archlinux.org/cgit/aur.git/snapshot/icaclient.tar.gz | tar xzf - --strip-components=1 -C ~/tmp" \
     && sudo -u builduser bash -c "cd ~/tmp && makepkg -si --noconfirm " \
     && userdel -r builduser \
-    && pacman -Rs --noconfirm git gcc make \
+    && pacman -Rs --noconfirm git gcc make autoconf automake \
     && pacman -Scc --noconfirm 
 ENTRYPOINT ["/opt/Citrix/ICAClient/wfica"]

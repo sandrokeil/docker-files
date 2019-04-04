@@ -3,5 +3,5 @@
 FROM sandrokeil/archlinux:latest
 RUN pacman -Sy --noconfirm git openssh vim gnome-keyring libsecret \
     && pacman -Scc --noconfirm
-RUN mkdir -p /opt/phpstorm && curl -L https://download.jetbrains.com/webide/PhpStorm-2019.1.tar.gz | tar xzf - --strip-components=1 -C /opt/phpstorm
+RUN mkdir -p /opt/phpstorm && curl -L https://download.jetbrains.com/webide/PhpStorm-191.6183.55.tar.gz | tar xzf - --strip-components=1 -C /opt/phpstorm
 ENTRYPOINT ["/opt/phpstorm/bin/phpstorm.sh"]

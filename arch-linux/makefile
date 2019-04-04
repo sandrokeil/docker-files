@@ -58,7 +58,7 @@ parallel-build:
 	parallel --jobs 24 < commands.txt
 
 docker-build-one:
-	docker build   -t sandrokeil/archlinux:`echo $${image##*/} | sed "s/.m4//"` -f `echo $${image##*/} | sed "s/.m4//"` .
+	docker build --squash -t sandrokeil/archlinux:`echo $${image##*/} | sed "s/.m4//"` -f `echo $${image##*/} | sed "s/.m4//"` .
 
 docker-build-one-nvidia:
 	docker build --squash -t sandrokeil/archlinux-nvidia:`echo $${image##*/} | sed "s/.m4//" | sed "s/-nvidia//"` -f `echo $${image##*/} | sed "s/.m4//"` .

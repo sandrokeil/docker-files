@@ -25,13 +25,13 @@ RUN echo "[multilib]" >> /etc/pacman.conf \
         lib32-gst-plugins-good \
         lib32-nvidia-libgl \
         lib32-nvidia-utils
-RUN pacman -Sy --noconfirm sudo fakeroot patch gzip git gcc make pkg-config diffutils file \
+RUN pacman -Sy --noconfirm sudo fakeroot patch gzip git gcc make pkg-config diffutils automake autoconf file \
     && useradd builduser -m \
     && passwd -d builduser \
     && printf "builduser ALL=(ALL) ALL\n" | tee -a /etc/sudoers \
     && sudo -u builduser bash -c "mkdir -p ~/tmp && curl -L https://aur.archlinux.org/cgit/aur.git/snapshot/dxvk-bin.tar.gz | tar xzf - --strip-components=1 -C ~/tmp" \
     && sudo -u builduser bash -c "cd ~/tmp && makepkg -si --noconfirm " \
     && userdel -r builduser \
-    && pacman -Rs --noconfirm git gcc make \
+    && pacman -Rs --noconfirm git gcc make autoconf automake \
     && pacman -Scc --noconfirm 
 ENTRYPOINT ["playonlinux"]

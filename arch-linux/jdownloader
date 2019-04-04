@@ -5,7 +5,7 @@ RUN echo "[multilib]" >> /etc/pacman.conf \
     && echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf \
     && pacman -Sly multilib \
     && pacman -Sy --noconfirm jre10-openjdk wget bash hicolor-icon-theme unzip shared-mime-info desktop-file-utils fontconfig ttf-dejavu p7zip unrar
-RUN pacman -Sy --noconfirm sudo fakeroot patch gzip git gcc make pkg-config diffutils file \
+RUN pacman -Sy --noconfirm sudo fakeroot patch gzip git gcc make pkg-config diffutils automake autoconf file \
     && useradd builduser -m \
     && passwd -d builduser \
     && printf "builduser ALL=(ALL) ALL\n" | tee -a /etc/sudoers \
@@ -14,6 +14,6 @@ RUN pacman -Sy --noconfirm sudo fakeroot patch gzip git gcc make pkg-config diff
     && sudo -u builduser bash -c "mkdir -p ~/tmp2 && curl -L https://aur.archlinux.org/cgit/aur.git/snapshot/jdownloader2.tar.gz | tar xzf - --strip-components=1 -C ~/tmp2" \
     && sudo -u builduser bash -c "cd ~/tmp2 && makepkg -si --noconfirm " \
     && userdel -r builduser \
-    && pacman -Rs --noconfirm git gcc make \
+    && pacman -Rs --noconfirm git gcc make autoconf automake \
     && pacman -Scc --noconfirm 
 ENTRYPOINT ["JDownloader"]

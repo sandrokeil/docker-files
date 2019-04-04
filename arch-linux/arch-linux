@@ -1,5 +1,7 @@
 FROM archlinux/base
 
+COPY Symbola.ttf /usr/share/fonts/TTF/Symbola.ttf
+
 RUN pacman-key --init \
     && pacman -Sy --noconfirm archlinux-keyring \
     && pacman -Syu --noconfirm \
@@ -13,7 +15,10 @@ RUN pacman-key --init \
         pulseaudio-alsa \
         ttf-dejavu \
         ttf-freefont \
+        ttf-bitstream-vera \
         ttf-liberation \
+        ttf-arphic-uming \
+        ttf-roboto \
         noto-fonts \
         kbd \
         coreutils \

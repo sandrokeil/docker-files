@@ -12,14 +12,14 @@ define(`MAKEPKG',
 `&& sudo -u builduser bash -c "cd ~/$1 && makepkg -si --noconfirm $2"')
 
 define(`AUR_ADD_USER',
-`RUN pacman -Sy --noconfirm sudo fakeroot patch gzip git gcc make pkg-config diffutils file \
+`RUN pacman -Sy --noconfirm sudo fakeroot patch gzip git gcc make pkg-config diffutils automake autoconf file \
     && useradd builduser -m \
     && passwd -d builduser \
     && printf "builduser ALL=(ALL) ALL\n" | tee -a /etc/sudoers')
 
 define(`AUR_DEL_USER',
 `    && userdel -r builduser \
-    && pacman -Rs --noconfirm git gcc make \
+    && pacman -Rs --noconfirm git gcc make autoconf automake \
     && pacman -Scc --noconfirm $1')
 
 define(`AUR_PKGBUILD_SED',

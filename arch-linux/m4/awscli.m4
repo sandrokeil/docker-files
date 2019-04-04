@@ -3,7 +3,7 @@ include(`arch.m4')
 RUN pacman -Sy --noconfirm python-pip groff libffi \
     && pip install --upgrade \
        awscli \
-       boto \
+       boto3 \
        pip \
     && pacman -Scc --noconfirm
 
