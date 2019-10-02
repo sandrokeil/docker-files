@@ -1,4 +1,4 @@
-FROM openresty/openresty:alpine-fat
+FROM openresty/openresty:1.15.8.2-alpine-fat
 
 RUN apk add --no-cache --virtual .run-deps \
     bash \
@@ -36,7 +36,7 @@ RUN apk add --no-cache --virtual .build-deps \
         make \
         autoconf \
         automake \
-    && /usr/local/openresty/luajit/bin/luarocks install lua-resty-auto-ssl \
+    && /usr/local/openresty/luajit/bin/luarocks install lua-resty-auto-ssl 0.13.1-1 \
     && apk del .build-deps \
     && rm -rf /usr/local/openresty/nginx/conf/* \
     && mkdir -p /var/cache/nginx
