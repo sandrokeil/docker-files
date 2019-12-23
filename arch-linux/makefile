@@ -11,12 +11,10 @@ dockerfiles:
 
 docker-build-base:
 	docker build --squash -q -t sandrokeil/archlinux:latest -f arch-linux . ;\
-	docker build --squash -q -t sandrokeil/archlinux-mesa:latest -f arch-linux-mesa . ;\
 	docker build --squash -q -t sandrokeil/archlinux-nvidia:latest -f arch-linux-nvidia . ;\
 
 docker-push-base:
 	docker push sandrokeil/archlinux:latest ;\
-	docker push sandrokeil/archlinux-mesa:latest ;\
 	docker push sandrokeil/archlinux-nvidia:latest ;\
 
 docker-build:

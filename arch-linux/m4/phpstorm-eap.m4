@@ -1,3 +1,6 @@
 include(`arch.m4')
 include(`i-git.m4')
+include(`i-php.m4')
+include(`i-npm.m4')
+include(`i-cfnlint.m4')
 include(`i-phpstorm-eap.m4')

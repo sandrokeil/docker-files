@@ -3,5 +3,16 @@
 FROM sandrokeil/archlinux:latest
 RUN pacman -Sy --noconfirm git openssh vim gnome-keyring libsecret \
     && pacman -Scc --noconfirm
-RUN mkdir -p /opt/phpstorm && curl -L https://download.jetbrains.com/webide/PhpStorm-191.6183.55.tar.gz | tar xzf - --strip-components=1 -C /opt/phpstorm
+RUN pacman -Sy --noconfirm php \
+    && pacman -Scc --noconfirm
+RUN pacman -Sy --noconfirm npm openssl \
+    && pacman -Scc --noconfirm
+RUN pacman -Sy --noconfirm python-pip \
+    && pip install --upgrade \
+       cfn-lint \
+    && pacman -Scc --noconfirm
+RUN pacman -Sy --noconfirm graphviz \
+    && pacman -Scc --noconfirm
+RUN mkdir -p /opt/phpstorm && curl -L https://download.jetbrains.com/webide/PhpStorm-192.5728.76.tar.gz | tar xzf - --strip-components=1 -C /opt/phpstorm
+ENV PATH="/opt/phpstorm/jbr/bin:${PATH}"
 ENTRYPOINT ["/opt/phpstorm/bin/phpstorm.sh"]
