@@ -1,4 +1,4 @@
-RUN pacman -Sy --noconfirm ffmpeg libfdk-aac lame a52dec libvorbis flac wavpack libmpeg2 xvidcore youtube-dl aria2 \
+RUN pacman -Sy --noconfirm ffmpeg libmfx libfdk-aac lame a52dec libvorbis flac wavpack libmpeg2 xvidcore youtube-dl aria2 \
     && pacman -Scc --noconfirm \
     && echo "--ignore-errors" > /etc/youtube-dl.conf \
     && echo "-o ~/Videos/%(title)s.%(ext)s" >> /etc/youtube-dl.conf \
