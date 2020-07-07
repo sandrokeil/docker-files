@@ -1,8 +1,6 @@
 FROM sandrokeil/archlinux:latest
 
-RUN pacman-key --init \
-    && pacman -Sy --noconfirm archlinux-keyring \
-    && pacman -Syu --noconfirm \
+RUN  pacman -Sy --noconfirm \
         mesa \
         mesa-vdpau \
         ocl-icd \
