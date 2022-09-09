@@ -23,23 +23,23 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: "Generate Docker files"
-        working-directory: archlinux
+        working-directory: arch-linux
         run: make
 
       - name: "Build base images"
-        working-directory: archlinux
+        working-directory: arch-linux
         run: make docker-build-base
 
       - name: "Push base images"
-        working-directory: archlinux
+        working-directory: arch-linux
         run: make docker-push-base
 
       - name: "Build images"
-        working-directory: archlinux
+        working-directory: arch-linux
         run: make docker-build
 
       - name: "Push images"
-        working-directory: archlinux
+        working-directory: arch-linux
         run: make docker-push
 
 
