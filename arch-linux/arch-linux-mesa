@@ -5,5 +5,9 @@ RUN  pacman -Sy --noconfirm \
         mesa-vdpau \
         ocl-icd \
         opencl-mesa \
+        libva-mesa-driver \
         libvdpau-va-gl \
-    && pacman -Scc --noconfirm
+        libva-utils \
+        xf68-video-amdgpu \
+        vulkan-radeon \
+        libva-vdpau-driver

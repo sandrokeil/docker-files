@@ -10,8 +10,8 @@ dockerfiles:
 	done
 
 docker-build-base:
-	docker pull archlinux/base
-	docker build --squash -q -t sandrokeil/archlinux:latest -f arch-linux . ;\
+	docker pull archlinux/archlinux:base
+	docker build --squash -t sandrokeil/archlinux:latest -f arch-linux . ;\
 	docker build --squash -q -t sandrokeil/archlinux:mesa -f arch-linux-mesa . ;\
 	docker build --squash -q -t sandrokeil/archlinux-nvidia:latest -f arch-linux-nvidia . ;\
 
@@ -56,16 +56,16 @@ push-list:
 	done
 
 parallel-build:
-	parallel --jobs 24 < commands.txt
+	parallel --jobs 28 < commands.txt
 
 docker-build-one:
-	docker build --squash -t sandrokeil/archlinux:`echo $${image##*/} | sed "s/.m4//"` -f `echo $${image##*/} | sed "s/.m4//"` .
+	docker build --squash -t sandrokeil/archlinux:`echo $${image##*/} | sed "s/.m4//"` -f `echo build/$${image##*/} | sed "s/.m4//"` .
 
 docker-build-one-nvidia:
-	docker build --squash -t sandrokeil/archlinux-nvidia:`echo $${image##*/} | sed "s/.m4//" | sed "s/-nvidia//"` -f `echo $${image##*/} | sed "s/.m4//"` .
+	docker build --squash -t sandrokeil/archlinux-nvidia:`echo $${image##*/} | sed "s/.m4//" | sed "s/-nvidia//"` -f `echo build/$${image##*/} | sed "s/.m4//"` .
 
 docker-build-one-mesa:
-	docker build --squash -t sandrokeil/archlinux-mesa:`echo $${image##*/} | sed "s/.m4//" | sed "s/-mesa//"` -f `echo $${image##*/} | sed "s/.m4//"` .
+	docker build --squash -t sandrokeil/archlinux-mesa:`echo $${image##*/} | sed "s/.m4//" | sed "s/-mesa//"` -f `echo build/$${image##*/} | sed "s/.m4//"` .
 
 docker-push:
 	for i in $(filter-out %nvidia.m4 %mesa.m4,$(LIST)); do \

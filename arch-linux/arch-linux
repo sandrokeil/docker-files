@@ -1,6 +1,4 @@
-FROM archlinux/base
-
-COPY Symbola.ttf /usr/share/fonts/TTF/Symbola.ttf
+FROM archlinux/archlinux:base
 
 RUN pacman -Syu --noconfirm \
         xdg-utils \
@@ -17,14 +15,17 @@ RUN pacman -Syu --noconfirm \
         ttf-liberation \
         ttf-arphic-uming \
         ttf-roboto \
+        ttf-caladea \
+        ttf-carlito \
         noto-fonts \
         kbd \
         coreutils \
-        binutils \
-    && pacman -Scc --noconfirm \
-    && echo LANG=en_US.UTF-8 > /etc/locale.conf \
-    && sed -i "s/#de_DE/de_DE/g" /etc/locale.gen \
-    && sed -i "s/#en_US.UTF/en_US.UTF/g" /etc/locale.gen \
+        binutils
+
+RUN echo LANG=en_US.UTF-8 > /etc/locale.conf \
+    && sed -i '/de_DE.UTF/s/^#//g' /etc/locale.gen \
+    && sed -i '/en_US.UTF/s/^#//g' /etc/locale.gen \
+    && cat /etc/locale.gen \
     && locale-gen \
     && echo KEYMAP=de-latin1 > /etc/vconsole.conf \
     && echo FONT=lat9w-16 >> /etc/vconsole.conf
