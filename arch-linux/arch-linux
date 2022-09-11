@@ -23,7 +23,7 @@ RUN pacman -Syu --noconfirm \
         binutils
 
 RUN echo LANG=en_US.UTF-8 > /etc/locale.conf \
-    && sed -i '/de_DE.UTF/s/^#//g' /etc/locale.gen \
+#    && sed -i '/de_DE.UTF/s/^#//g' /etc/locale.gen \
     && sed -i '/en_US.UTF/s/^#//g' /etc/locale.gen \
     && cat /etc/locale.gen \
     && locale-gen \
