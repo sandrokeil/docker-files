@@ -20,7 +20,7 @@ jobs:
           fetch-depth: '0'
 
       - name: "Detect changes"
-        uses: proophsoftware/action-paths-filter@v2
+        uses: sandrokeil/action-paths-filter@v2
         id: filter
         with:
           base: ${{ steps.tag_version.outputs.previous_tag }}
