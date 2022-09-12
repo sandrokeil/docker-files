@@ -12,7 +12,7 @@ dockerfiles:
 docker-build-base:
 	docker pull archlinux/archlinux:base
 	docker build --squash -t sandrokeil/archlinux:latest -f arch-linux . ;\
-	docker build --squash -q -t sandrokeil/archlinux:mesa -f arch-linux-mesa . ;\
+	docker build --squash -q -t sandrokeil/archlinux-mesa:latest -f arch-linux-mesa . ;\
 	docker build --squash -q -t sandrokeil/archlinux-nvidia:latest -f arch-linux-nvidia . ;\
 
 docker-push-base:
